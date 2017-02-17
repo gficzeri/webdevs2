@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Where is my car? </title>
+        
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    </head>
+    <body>
+        <h1>TOWED CAR LOCATOR</h1>
+        <p>Insert your towed car's license plate number in order to find its location.</p>
+        <p><b>License Plate Number:
+        <input type="text" id="plateNumber" placeholder="Search...">
+        <button id="submit">Submit</button>
+        </p>
+        <div id="results"></div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            /*
+                This script retrieves the towed data information
+                from the City of Chicago Data Portal
+                
+                You are required to enter the information for your vehicle
+                as a license plate number
+            
+            */
+            
+            var towedVehicle;
+            
+            $(function(){
+                
+                $("#submit").click(function(){
+                
+                    var html = "";
+                    
+                    var inspections;
+                    
+                    var baseURL = 'https://data.cityofchicago.org/resource/rp42-fxjt.json';
+                    
+                    var filters = "?plate=" + $("#plateNumber").val();
+                    
+               
+                    var url = baseURL + filters;
+                        
+                    $.getJSON(url).done (function (data) {
+                        
+                        console.log(data);
+                    
+                            <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Color', 'Number of Towed Vehicles'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+            
+            
+        </script>
+    </body>
+</html>
