@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Food Inspections</title>
+    </head>
+    <body>
+        <h1>Food Inspections</h1>
+        <button id="submit">Submit</button>
+        <div id="results"></div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <script>
+            /*
+                This script retrieves the food inspections data information
+                from the City of Chicago Data Portal
+
+            
+            */
+            
+            var inspectionsURL;
+            
+            $(function(){
+                
+                $("#submit").click(function(){
+                    
+                    var html = "";
+                    
+                    // base URL to the food inspections data
+                    var baseURL = 'https://data.cityofchicago.org/resource/cwig-ma7x.json';
+                    
+                    // optional filters we're appending - date range and zip
+                    var filters = "";
+                    
+                    // full URL
+                    var url = baseURL;
+                        
+                    $.getJSON(url).done (function (data) {
+                        // TODO:  add script to add data to the DOM
+                        console.log(data);
+                        // loop through the records
+                        
+                        inspectionsURL = data;
+                        
+                        var date = inspectionsURL[0].inspections_date;
+
+                        var pass = 0, fail = 0, no_entry = 0;
+                        
+                        if(inspectionsURL.length == 0){
+                            html = "No Entry";
+                        } else{
+                            $.each(inspectionsURL, function(index, value){
+                                if(value.inspectionsURL_date == date){
+                                    var rlt = value.results;
+                                    if(rlt == "pass")
+                                        pass++;
+                                    else if(rlt == "fail" || rlt == "no_entry")
+                                        fail++;
+                                    else
+                                        no_entry++;
+                                }
+                            })  // end of .each loop
+                            
+                            /*html = "<p>Blue: " + blu + "<br>" +
+                                    "Red: " + red + "</p>";*/
+                            // Load the Visualization API and the corechart package.
+                          google.charts.load('current', {'packages':['corechart']});
+                    
+                          // Set a callback to run when the Google Visualization API is loaded.
+                          google.charts.setOnLoadCallback(drawChart);
+                    
+                          // Callback that creates and populates a data table,
+                          // instantiates the pie chart, passes in the data and
+                          // draws it.
+                          function drawChart() {
+                    
+                            // Create the data table.
+                            var data = new google.visualization.DataTable();
+                            data.addColumn('string', 'Food results');
+                            data.addColumn('number', 'Quantity');
+                            data.addRows([
+                              ['pass', blu],
+                              ['fail', red],
+                              ['no_entry', oth]
+                            ]);
+                    
+                            // Set chart options
+                            var options = {'title':'Inspections passed by color on ' + date,
+                                           'width':400,
+                                           'height':300};
+                    
+                            // Instantiate and draw our chart, passing in some options.
+                            var chart = new google.visualization.PieChart(document.getElementById('results'));
+                            chart.draw(data, options);
+                          }
+                        }
+                        
+                        //$("#results").html(html);
+                        
+                    }) // end of getJSON function
+                    
+                })  // end of click function
+                
+            }) // end of ready command
+            
+            
+        </script>
+    </body>
+</html>
