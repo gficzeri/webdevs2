@@ -1,9 +1,201 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> Homepage Github </title>
-    </head>
-    <body>
-        <h1>Homepage----Github</h1>
-    </body>
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A portfolio template that uses Material Design Lite.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>GITHUB Launch Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-pink.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+            <div class="mdl-layout__header-row portfolio-logo-row">
+                <span class="mdl-layout__title">
+                    <div class="portfolio-logo"></div>
+                    <span class="mdl-layout__title">Gio's GitHub Portfolio Website</span>
+                </span>
+            </div>
+            <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                    <a class="mdl-navigation__link is-active" href="index.html">Portfolio</a>
+                    <a class="mdl-navigation__link" href="about.html">About</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                <a class="mdl-navigation__link is-active" href="index.html">Portfolio</a>
+                <a class="mdl-navigation__link" href="about.html">About</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="mdl-grid portfolio-max-width">
+                <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                    <div class="mdl-card__media">
+                        <img class="article-image" src=" data:image/jpeg;base64,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" border="0" alt="">
+                    </div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Project 2</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        The goal of this project was to create an application that will allow us to call upon the CTA Bustraker API and get the wait time until the next bus arrives.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://preview.c9users.io/gficzeri/webdevs2/projects/2/index.html?_c9_id=livepreview4&_c9_host=https://ide.c9.io">Read more</a>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                    <div class="mdl-card__media">
+                        <img class="article-image" src=" images/example-work07.jpg" border="0" alt="">
+                    </div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Sunt nulla</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-example01.html">Read more</a>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                    <div class="mdl-card__media">
+                        <img class="article-image" src=" images/example-work02.jpg" border="0" alt="">
+                    </div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Android.com website</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-example01.html">Read more</a>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                    <div class="mdl-card__media">
+                        <img class="article-image" src=" images/example-work03.jpg" border="0" alt="">
+                    </div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Dashboard template</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-example01.html">Read more</a>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                    <div class="mdl-card__media">
+                        <img class="article-image" src=" images/example-work04.jpg" border="0" alt="">
+                    </div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Text-heavy website</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-example01.html">Read more</a>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                    <div class="mdl-card__media">
+                        <img class="article-image" src=" images/example-work08.jpg" border="0" alt="">
+                    </div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Ex officia laborum</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-example01.html">Read more</a>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                    <div class="mdl-card__media">
+                        <img class="article-image" src=" images/example-work05.jpg" border="0" alt="">
+                    </div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Stand-alone article</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-example01.html">Read more</a>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                    <div class="mdl-card__media">
+                        <img class="article-image" src=" images/example-work06.jpg" border="0" alt="">
+                    </div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">MDL website</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-example01.html">Read more</a>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                    <div class="mdl-card__media">
+                        <img class="article-image" src=" images/example-work09.jpg" border="0" alt="">
+                    </div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Consequat ut quis</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-example01.html">Read more</a>
+                    </div>
+                </div>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo">Simple portfolio website</div>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy & Terms</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+
 </html>
