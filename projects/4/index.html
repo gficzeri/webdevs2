@@ -10,6 +10,7 @@
             display: none;
         }
       </style>
+      <link rel="manifest" href="/manifest.json">
   </head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
@@ -17,30 +18,157 @@
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">Title</span>
+          <span class="mdl-layout-title">News and Towed Cars</span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="#"> Home</a>
+            <a class="mdl-navigation__link" href="#"> Towed Car Locator</a>
+            <a class="mdl-navigation__link" href="#"> New York Times Article Search</a>
           </nav>
         </div>
       </header>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Title</span>
         <nav class="mdl-navigation">
-          <a id = "link1" class="mdl-navigation__link" href="#">Link 1</a>
-          <a id = "link2" class="mdl-navigation__link" href="#">Link 2</a>
-          <a id = "link3" class="mdl-navigation__link" href="#">Link 3</a>
+          <a id = "link1" class="mdl-navigation__link" href="#">Home</a>
+          <a id = "link2" class="mdl-navigation__link" href="#"> Towed Car Locator</a>
+          <a id = "link3" class="mdl-navigation__link" href="#">New York Times Article Search</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
-        <div id = "screen1" class="screen page-content">Screen 1</div>
-        <div id = "screen2" class="screen page-content">Screen 2</div>
-        <div id = "screen3" class="screen page-content">Screen 3</div>
+        <div id = "screen1" class="screen page-content">
+          <body background="http://cdn.wallpapersafari.com/26/99/dp3gK5.jpg">
+
+          
+          
+          </div>
+        <div id = "screen2" class="screen page-content">
+                <h1 style="color:red">TOWED CAR LOCATOR</h1>
+        <p style="color:red">Insert your towed car's license plate number in order to find its location.</p>
+        <p style="color:red"><b>License Plate Number:
+        <input type="text" id="plateNumber" placeholder="Search...">
+        <button id="submit">Submit</button>
+        </p>
+        <div id="results"></div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            /*
+                This script retrieves the towed data information
+                from the City of Chicago Data Portal
+                
+                You are required to enter the information for your vehicle
+                as a license plate number
+            
+            */
+            
+            var towedVehicle;
+            
+            $(function(){
+                
+                $("#submit").click(function(){
+                
+                    var html = "";
+                    
+                    var inspections;
+                    
+                    var baseURL = 'https://data.cityofchicago.org/resource/rp42-fxjt.json';
+                    
+                    var filters = "?plate=" + $("#plateNumber").val();
+                    
+               
+                    var url = baseURL + filters;
+                        
+                    $.getJSON(url).done (function (data) {
+                        
+                        console.log(data);
+                      
+                        
+                        towedVehicle = data;
+                        
+                        if(towedVehicle.length == 0){
+                            html = "No Vehicle Reported";
+                        } else{
+                            $.each(towedVehicle, function(index, value){
+                                
+                                html += "<div class='vehicle'><p>" + 
+                                value.color + " " + value.make + "<br>" +
+                                "Plate Number: " + value.plate + "<br>" + 
+                                "Location: " + value.towed_to_address + "<br>" +
+                                "<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyBSkewRIegCXB8MNy2luW8h6kNYs7Gn2JU&q=" + value.towed_to_address + "' allowfullscreen></iframe>" +
+                                "</p></div>";
+                            
+                            })
+                        }
+                        
+                        $("#results").html(html);
+                        
+                    }) 
+                    
+                }) 
+                
+            })
+            
+            
+        </script>
+        </div>
+        <div id = "screen3" class="screen page-content">
+          <h1 style="color:red" id="title">New York Times Article Search</h1>
+        <input type="text" id='input' name="search" placeholder="Article">
+        <button id='submit'>Find My Article</button>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            /*
+                This script retrieves 311 pot hole service request data for 
+                from the 
+                City of Chicago Data Portal
+                
+                This script doesn't update the DOM.
+    
+            */
+            
+            $('#submit').click(function(){
+                var input = $("#input").val();
+                var baseURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+        
+                var filters = '?api-key=c7b12fd4db6f4f7189bd8ab4e26c248b&q=' + input ;
+                // full URL
+                var url = baseURL + filters;
+                console.log(url);
+                
+
+                    // jQuery command to retrieve json data
+                    
+                    $.getJSON(url)
+                        .done (function (data) {
+                            // TODO:  add script to add data to the DOM
+                            console.log(data);
+                            console.log(data.response.docs)
+                            // loop through the records
+                        
+                            $.each(data.response.docs, function(index, value){
+                                var html=
+                                '<div id="results"><h3>'+value.headline.main+'</h3> '+
+                                '<p>date: ' + value.pub_date +"</p>" + 
+                                '<p>source: ' +value.source + "</p>"+ 
+                                '<p>' +value.snippet + "</p>"+
+                                '<p>type_of_material: ' +value.type_of_material + "</p>"+
+                                '<p>Link: '+value.web_url + "</P>"
+                                '</div>';
+                                
+                                $("body").append(html);
+                            })
+                            
+                      
+                        
+                        });
+                    
+            })
+            
+        </script>
+          </div>
 
       </main>
     </div>
@@ -62,9 +190,24 @@
             $("#link3").on("click", function(){
                $(".screen").hide();
                $("#screen3").show();
+               
+               
+               
            })
         })
     </script>
     
   </body>
+  <script>
+  if ('serviceWorker' in navigator) {
+    console.log("Will the service worker register?");
+    navigator.serviceWorker.register('service-worker.js')
+      .then(function(reg){
+        console.log("Yes, it did.");
+      }).catch(function(err) {
+        console.log("No it didn't. This happened: ", err)
+      });
+  }
+</script>
+
 </html>
