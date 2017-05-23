@@ -1,0 +1,79 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        /*
+            This script retrieves 311 pot hole service request data for 
+            from the 
+            City of Chicago Data Portal
+            
+            This script doesn't update the DOM.
+
+        */
+
+        // base URL to the food inspections data
+        var baseURL = 'https://data.cityofchicago.org/resource/xzkq-xp2w.json';
+        
+        // optional filters we're appending - status
+        var filters = '?department=CITY COUNCIL';
+        
+        // full URL
+        var url = baseURL + filters;
+        
+        console.log (url);
+        
+        $(
+            // jQuery command to retrieve json data
+            
+            $.getJSON(url)
+                .done (function (data) {
+                    // TODO:  add script to add data to the DOM
+                    console.log(data);
+
+                    // loop through the records
+                    
+                    $.each(data, function(index, value){
+                       var html = "<div><h1>" + 
+                       
+                                    "</div>";
+                                    
+                        $("body").append(html);
+                    });
+                })
+            
+            
+        )
+        
+        
+    </script>
+      <script>
+          //
+          // Define your database
+          //
+          var db = new Dexie("employeeDB");
+          db.version(1).stores({
+              employees: '++name,department,title,salary'
+          });
+
+          //
+          // Put some data into it
+          //
+          db.employees.count().then (function(count){
+            console.log(count);
+              //
+              if (count == 0) {
+              // Then when data is stored, read from it
+              //
+              return db.friends.get('Berg');
+          }).then(function (friend) {
+              //
+              // Display the result
+              //
+              alert ("friend.name" + friend.shoeSize);
+          }).catch(function(error) {
+             //
+             // Finally don't forget to catch any error
+             // that could have happened anywhere in the
+             // code blocks above.
+             //
+             alert ("Ooops: " + error);
+          });
+      </script>

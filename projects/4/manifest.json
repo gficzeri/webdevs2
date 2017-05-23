@@ -1,0 +1,15 @@
+{
+  "short_name": "News and Towed Cars",
+  "name": "News and Towed Cars",
+  "icons": [
+    {
+      "src":"http://static-cdn1.ustream.tv/i/channel/picture/6/2/9/2/6292990/6292990_bape-logo_1373428936,192x192,r:1.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#000",
+  "Theme_color": "#536878",
+  "display": "standalone"
+}
