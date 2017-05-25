@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Image to use:</p>
+
+<img id="gucci" width="420" height="277"
+src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/1960s_Gucci_Logo.svg/1200px-1960s_Gucci_Logo.svg.png" alt="The Scream">
+
+<p>Canvas:</p>
+
+<canvas id="myCanvas" width="8000" height="8000"
+style="border:1px solid #d3d3d3;">
+
+</canvas>
+
+<script>
+window.onload = function() {
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    var img = document.getElementById("gucci");
+   ctx.drawImage(img, 1, 10);
+};
+</script>
+
+</body>
+</html>
