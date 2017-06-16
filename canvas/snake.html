@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+            <body>
+                <canvas id='myCanvas' width='600' height='600'></canvas>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                 <script>
+                     $(function()
+                     
+                     var canvas = $('#myCanvas')[0];
+                     var ctx = canvas.getContext('2d');
+                     
+                     var width = $('#myCanvas').width();
+                     var height = $('#myCanvas').height();
+                     
+                     var cw = 10;
+                     var d;
+                     var food;
+                     var score;
+                     
+                     var snakeArray;
+                     
+                     ctx.fillStyle = "white";
+                     ctx.fillRect(0,0,width,height);
+                     ctx.strokeStyle = "black";
+                     ctx.strokeRect(0,0,width,height);
+                     
+                     ctx.fillStyle = "#045B2E";
+                     ctx.fillRect(0,0, cw,cw);
+                     ctx.strokeStyle = "white";
+                     ctx.strokeRect(0,0, cw, cw)
+                     
+                     function paintCell(x,y){
+                         ctx.fillStyle = "#045B2E";
+                         ctx.fillRect(x*cw, y*cw, cw, cw)
+                     }
+                     
+                     function createSnake(){
+                         var length = 5;
+                         snakeArray =[];
+                         for(var i = length -1; i>=0; i--){
+                             snakeArray.push({x: i, y: 0});
+                             
+                         }
+                     }
+                     function paint(){
+                         ctx.fillStyle = "white";
+                         ctx.fillRect(0,0,width,height);
+                         ctx.strokeStyle = "black";
+                         ctx.strokeRect(0,0,width,height);
+                         
+                         for(var i = 0; i < snakeArray.length; i++){
+                             var c = snakeArray[i];
+                             paintCell(c.x,c.y);
+                             
+                         }
+                     }
+                     })
+                     
+                     
+                 </script>
+            </body>
+  
+     
+      
+</html>
